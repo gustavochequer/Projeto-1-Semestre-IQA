@@ -23,14 +23,15 @@ double q9 ( double indice ) { //  Oxigênio Dissolvido : PESO 0.17
 
 double q1 ( double indice ) { // Coliformes Fecais : PESO 0.15
 
-    double A = 98.03, B = -36.45, C = 3.138, D = 0.06776;
+    double A = 98.03, B = -36.45, C = 3.14, D = 0.067;
     
     printf("Coliformes\n");
     if ( indice > 5e5 )
     	return 3.0;
 
 	// v1.1 - Ajuste na equação para estimação da qualidade em funcao de quantidade de coliformes fecais
-    indice = A + ( B * log(indice)) + ( C * pow( log(indice), 2 )) + (D * pow( log(indice), 3 ));
+	// v1.2 - Ajustado a base do Log 	
+    indice = A + ( B * log10(indice)) + ( C * pow( log10(indice), 2 )) + (D * pow( log10(indice), 3 ));
 
     return indice;
 
@@ -53,8 +54,8 @@ double q2 ( double indice ) { // pH : PESO 0.12
 }
 
 double q3 ( double indice ) { // Demanda Bioquímica de Oxigênio : PESO 0.1
-
-    double A = 102.6, B = -0.01101;
+	//v 1.2 alterada a variavel "B"
+    double A = 102.6, B = -0.1101;
     
     printf("DBO\n");
     if ( indice > 30 )
@@ -67,8 +68,8 @@ double q3 ( double indice ) { // Demanda Bioquímica de Oxigênio : PESO 0.1
 }
 
 double q5 ( double indice ) { // Fósforo total : PESO 0.1
-
-    double A = 213.7, B = -1.680, C = 0.3325;
+	
+    double A = 213.7, B = -1.68, C = 0.3325;
     
     printf("FOSFORO\n");
     if ( indice > 10.0 )
@@ -176,3 +177,5 @@ int main (void){
 
 //Lucas Ricciardi de Salles; 
 //lucas.ricciardi@outlook.com
+//Codigo alterado por Gustavo Chequer
+//gustavochequer@gmail.com
